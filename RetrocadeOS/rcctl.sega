@@ -1,0 +1,36 @@
+#!/bin/bash
+
+MESSBIN="/home/jsseidel/rc/emu/runmess"
+RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
+PICDIRNORM="/home/jsseidel/rc/sega_flyers_norm"
+ININORM="/home/jsseidel/rc/rcini/rc_norm_sega.ini"
+SEGAROMS="/home/jsseidel/rc/sega_roms"
+
+#
+# Args for retrocade
+NORM="-cx 1024 -cy 768 -bmpx 290 -bmpy 260 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+
+while [[ 1 ]]
+do
+	# Run retrocade
+	`${RCBIN} ${NORM}`
+
+	# Source the output of RUNGAME
+	. ./RUNGAME
+	
+	if [[ ${STATE} = "SHELL" ]]
+ 	then	
+		exit
+	elif [[ ${STATE} = "SWITCH" ]]
+ 	then	
+		exec /home/jsseidel/rc/RetrocadeOS/rcctl.atari2600
+	else
+		if [[ ${STATE} = "SHUTDOWN" ]] 
+		then
+			`shutdown -h now`
+		else
+			`${MESSBIN} -cartridge ${SEGAROMS}/${STATE} ${PREFS} genesis`
+		fi
+	fi
+done
+

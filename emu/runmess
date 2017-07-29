@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mess -rp /home/jsseidel/rc/nes_roms $*

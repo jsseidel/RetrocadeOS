@@ -1,6 +1,7 @@
 *.zip
 *.bin
 *.smd
+*.nes
 *.o
 retrocadeos
 

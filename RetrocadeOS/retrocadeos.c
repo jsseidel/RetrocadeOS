@@ -58,7 +58,9 @@ int main(int argc, char **argv) {
 	}
 
 	// Set up sound
-	install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL);
+	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL)==-1) {
+		allegro_message("WARNING: Unable to install sound: %s", allegro_error);
+	}
 
 	// Get the active games from RC_INI
 	if ((gRCGlob.m_nNumGames = RCGetGamePreferences()) == 0) {
@@ -145,7 +147,7 @@ int main(int argc, char **argv) {
 							fprintf(fp, "STATE=%s\n", gRCGlob.m_szRoms[gRCGlob.m_menuDisp.m_nCurrSel]);
 
 							// Game Name
-							fprintf(fp, "GNAME=%s\n", gRCGlob.m_szGames[gRCGlob.m_menuDisp.m_nCurrSel]);
+							fprintf(fp, "GNAME='%s'\n", gRCGlob.m_szGames[gRCGlob.m_menuDisp.m_nCurrSel]);
 
 							// Game specific prefs
 							fprintf(fp, "PREFS=\"%s\"\n", gRCGlob.m_szPrefs[gRCGlob.m_menuDisp.m_nCurrSel]);

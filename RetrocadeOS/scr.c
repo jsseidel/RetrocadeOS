@@ -17,6 +17,9 @@ typedef void (*FADEFUNC)(void);
 // local global
 FADEFUNC lgFadeFuncs[RC_NUM_FADE_FUNCS];
 
+// How long to rest within fade function loops
+#define REST_VAL 1 /*ms*/
+
 //
 // Initialize the screen saver
 void RCInitScrSave(void) {
@@ -115,12 +118,13 @@ void _fade(void) {
 	int i, x, y;
 	int dim;
 
-	for (i=0; i<8000; i++) {
+	for (i=0; i<2000; i++) {
 		x = rand() % gRCGlob.m_nScreenX;
 		y = rand() % gRCGlob.m_nScreenY;
 		dim = rand()%48 + 16;
 
 		RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, x, y, x, y, dim, dim);
+		rest(REST_VAL);
 	}
 
 	RCDrawBmp(gRCGlob.m_scrSave.m_hbmpCurr, 0, 0);
@@ -141,16 +145,20 @@ void _vlines(void) {
 					RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, x*8, y*8, x*8, y*8, 8, 8);
 				}
 			}
+			rest(REST_VAL);
 		}
 	}
+			
+	rest(250);
 
-	for (y=0; y<nNumBlocksY; y++) {
+	for (y=nNumBlocksY-1; y>=0; y--) {
 		if (y%2 == 1) {
 			for (x=0; x<nNumBlocksX; x++) {
 				for (i=0; i<2; i++) {
 					RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, x*8, y*8, x*8, y*8, 8, 8);
 				}
 			}
+			rest(REST_VAL);
 		}
 	}
 
@@ -172,16 +180,20 @@ void _hlines(void) {
 					RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, x*8, y*8, x*8, y*8, 8, 8);
 				}
 			}
+			rest(REST_VAL);
 		}
 	}
 
-	for (x=0; x<nNumBlocksX; x++) {
+	rest(250);
+
+	for (x=nNumBlocksX-1; x>=0; x--) {
 		if (x%2 == 1) {
 			for (y=0; y<nNumBlocksY; y++) {
 				for (i=0; i<2; i++) {
 					RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, x*8, y*8, x*8, y*8, 8, 8);
 				}
 			}
+			rest(REST_VAL);
 		}
 	}
 
@@ -198,6 +210,7 @@ void _vshade(void) {
 	for (i=0; i<16; i++) {
 		for (x=0; x<nNumBlocksX; x++) {
 			RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, i+x*16, 0, i+x*16, 0, 1, gRCGlob.m_nScreenY);
+			rest(REST_VAL);
 		}
 	}
 }
@@ -212,6 +225,7 @@ void _hshade(void) {
 	for (i=0; i<16; i++) {
 		for (y=0; y<nNumBlocksY; y++) {
 			RCDrawBmpPartial(gRCGlob.m_scrSave.m_hbmpCurr, 0, i+y*16, 0, i+y*16, gRCGlob.m_nScreenX, 1);
+			rest(REST_VAL);
 		}
 	}
 }

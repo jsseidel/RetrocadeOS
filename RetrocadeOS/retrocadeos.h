@@ -45,7 +45,7 @@
 #define UINT unsigned long int
 #endif
 
-#ifndef BOOK
+#ifndef BOOL
 #define BOOL int
 #endif
 

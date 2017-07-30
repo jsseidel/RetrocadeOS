@@ -27,6 +27,7 @@ do
 	else
 		if [[ ${STATE} = "SHUTDOWN" ]] 
 		then
+			# Only works if running kiosk mode as root
 			`shutdown -h now`
 		else
 			echo ${STELLABIN} ${ATARIROMS}/${STATE} ${PREFS}

@@ -33,6 +33,7 @@ do
 	else
 		if [[ ${STATE} = "SHUTDOWN" ]] 
 		then
+			# Only works if running kiosk mode as root
 			`shutdown -h now`
 		elif [[ ${STATE} = "ROTATE" ]]
 		then

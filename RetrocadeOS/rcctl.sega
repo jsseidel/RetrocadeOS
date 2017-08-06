@@ -1,10 +1,10 @@
 #!/bin/bash
 
-MESSBIN="/home/jsseidel/rc/emu/runmess"
+EMUBIN="/home/jsseidel/rc/emu/runmess"
 RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/jsseidel/rc/sega_flyers_norm"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_sega.ini"
-SEGAROMS="/home/jsseidel/rc/sega_roms"
+ROMS="/home/jsseidel/rc/sega_roms"
 
 #
 # Args for retrocade
@@ -30,7 +30,7 @@ do
 			# Only works if running kiosk mode as root
 			`shutdown -h now`
 		else
-			`${MESSBIN} -cartridge ${SEGAROMS}/${STATE} ${PREFS} genesis`
+			`${EMUBIN} -cartridge ${ROMS}/${STATE} ${PREFS} genesis`
 		fi
 	fi
 done

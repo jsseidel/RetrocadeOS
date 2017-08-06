@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAMEBIN="/home/jsseidel/rc/emu/runmame"
+EMUBIN="/home/jsseidel/rc/emu/runmame"
 RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/jsseidel/rc/arcade_flyers_norm"
 PICDIRROR="/home/jsseidel/rc/arcade_flyers_ror"
@@ -47,7 +47,7 @@ do
 		then	
 			exec /home/jsseidel/rc/RetrocadeOS/rcctl.nes
 		else
-			`${MAMEBIN} ${PREFS} ${STATE}`
+			`${EMUBIN} ${PREFS} ${STATE}`
 		fi
 	fi
 done

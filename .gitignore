@@ -2,6 +2,7 @@
 *.bin
 *.smd
 *.nes
+*.z64
 *.o
 retrocadeos
 RUNGAME

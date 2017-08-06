@@ -1,10 +1,10 @@
 #!/bin/bash
 
-STELLABIN="/home/jsseidel/rc/emu/runstella"
+EMUBIN="/home/jsseidel/rc/emu/runstella"
 RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/jsseidel/rc/atari2600_flyers"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_atari2600.ini"
-ATARIROMS="/home/jsseidel/rc/atari2600_roms"
+ROMS="/home/jsseidel/rc/atari2600_roms"
 
 #
 # Args for retrocade
@@ -23,15 +23,15 @@ do
 		exit
 	elif [[ ${STATE} = "SWITCH" ]]
  	then	
-		exec /home/jsseidel/rc/RetrocadeOS/rcctl.arc
+		exec /home/jsseidel/rc/RetrocadeOS/rcctl.n64
 	else
 		if [[ ${STATE} = "SHUTDOWN" ]] 
 		then
 			# Only works if running kiosk mode as root
 			`shutdown -h now`
 		else
-			echo ${STELLABIN} ${ATARIROMS}/${STATE} ${PREFS}
-			`${STELLABIN} ${ATARIROMS}/${STATE} ${PREFS}`
+			echo ${EMUBIN} ${ROMS}/${STATE} ${PREFS}
+			`${EMUBIN} ${ROMS}/${STATE} ${PREFS}`
 		fi
 	fi
 done

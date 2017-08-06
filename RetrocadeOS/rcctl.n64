@@ -1,0 +1,37 @@
+#!/bin/bash
+
+EMUBIN="/home/jsseidel/rc/emu/runmupen"
+RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
+PICDIRNORM="/home/jsseidel/rc/n64_flyers"
+ININORM="/home/jsseidel/rc/rcini/rc_norm_n64.ini"
+ROMS="/home/jsseidel/rc/n64_roms"
+
+#
+# Args for retrocade
+NORM="-cx 1024 -cy 768 -bmpx 300 -bmpy 206 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+
+while [[ 1 ]]
+do
+	# Run retrocade
+	`${RCBIN} ${NORM}`
+
+	# Source the output of RUNGAME
+	. ./RUNGAME	
+	
+	if [[ ${STATE} = "SHELL" ]]
+ 	then	
+		exit
+	elif [[ ${STATE} = "SWITCH" ]]
+ 	then	
+		exec /home/jsseidel/rc/RetrocadeOS/rcctl.arc
+	else
+		if [[ ${STATE} = "SHUTDOWN" ]] 
+		then
+			# Only works if running kiosk mode as root
+			`shutdown -h now`
+		else
+			`${EMUBIN} ${ROMS}/${STATE} ${PREFS}`
+		fi
+	fi
+done
+

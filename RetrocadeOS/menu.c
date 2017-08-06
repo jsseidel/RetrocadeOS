@@ -29,7 +29,7 @@ int RCInitMenu() {
 
 		// Try to load the bmp
 		if ((gRCGlob.m_menuDisp.m_hbmpGames[i] = RCLoadBmp(szPath, gRCGlob.m_nBmpX, gRCGlob.m_nBmpY))==NULL) {
-			fprintf(stderr, "Warning: %s not readable.\n", szPath);
+			fprintf(stderr, "Warning: %s not readable\n", szPath);
 			// No bmp available, let's use the one we know is there
 			if ((gRCGlob.m_menuDisp.m_hbmpGames[i] = RCLoadBmp(RC_404_BMP, gRCGlob.m_nBmpX, gRCGlob.m_nBmpY))==NULL) {
 				return 0;

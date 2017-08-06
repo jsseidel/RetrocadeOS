@@ -1,4 +1,5 @@
 #include "retrocadeos.h"
+#include <stdio.h>
 
 //
 // Loads a bitmap from disk

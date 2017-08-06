@@ -1,10 +1,10 @@
 #!/bin/bash
 
-MESSBIN="/home/jsseidel/rc/emu/runmess"
+EMUBIN="/home/jsseidel/rc/emu/runmess"
 RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/jsseidel/rc/nes_flyers_norm"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_nes.ini"
-NESROMS="/home/jsseidel/rc/nes_roms"
+ROMS="/home/jsseidel/rc/nes_roms"
 
 #
 # Args for retrocade
@@ -30,7 +30,7 @@ do
 			# Only works if running kiosk mode as root
 			`shutdown -h now`
 		else
-			`${MESSBIN} -cartridge ${NESROMS}/${STATE} ${PREFS} nes`
+			`${EMUBIN} -cartridge ${ROMS}/${STATE} ${PREFS} nes`
 		fi
 	fi
 done

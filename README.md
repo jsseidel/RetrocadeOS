@@ -12,6 +12,8 @@ Once you poke around in the root directory, it shouldn't be too hard to figure o
 |atari2600\_flyers     |BMP files that match rom names for displaying in the grid menu|
 |atari2600\_roms       |Game ROMS|
 |emu                   |Contains wrapper scripts for running the various emulators|
+|n64\_flyers\_norm     |BMP files that match rom names for displaying in the grid menu|
+|n64\_roms             |Game ROMS|
 |nes\_flyers\_norm     |BMP files that match rom names for displaying in the grid menu|
 |nes\_roms             |Game ROMS|
 |rcini                 |Initialization files that tells RetrocadeOS what to display and if there are any additional preferences per game|
@@ -19,5 +21,3 @@ Once you poke around in the root directory, it shouldn't be too hard to figure o
 |samples               |Game sound samples|
 |sega\_flyers\_norm    |BMP files that match rom names for displaying in the grid menu|
 |sega\_roms            |Game ROMS|
-|n64\_flyers\_norm     |BMP files that match rom names for displaying in the grid menu|
-|n64\_roms             |Game ROMS|

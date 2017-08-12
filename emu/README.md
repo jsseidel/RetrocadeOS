@@ -1,6 +1,6 @@
 # Installing emus
 
 ```
-sudo apt install mame mess stella
+sudo apt install mame mess stella mupen64plus
 ```
 

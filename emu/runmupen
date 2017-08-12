@@ -2,5 +2,4 @@
 
 #mupen64plus --fullscreen --resolution 1980x1080 /home/jsseidel/rc/n64_roms/$*
 #mupen64plus --fullscreen --resolution 640x480 $*
-mupen64plus --fullscreen --resolution 800x600 --gfx mupen64plus-video-glide64mk2 $*
-
+mupen64plus --fullscreen --resolution 1366x768 --gfx mupen64plus-video-glide64mk2 $*

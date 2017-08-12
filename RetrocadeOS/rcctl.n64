@@ -19,7 +19,7 @@ do
 	. ./RUNGAME	
 	
 	if [[ ${STATE} = "SHELL" ]]
- 	then	
+ 	then
 		exit
 	elif [[ ${STATE} = "SWITCH" ]]
  	then	

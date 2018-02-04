@@ -212,6 +212,7 @@ void _setGlobalDefaults(void) {
 	gRCGlob.m_scrSave.m_nLag = RC_SCRSAVE_TIME;
 	sprintf(gRCGlob.m_szCfg, "%s", RC_INI);
 	sprintf(gRCGlob.m_szPic, "%s", RC_SNAP);
+	sprintf(gRCGlob.m_szRunGame, "%s", RC_RUNGAME);
 	gRCGlob.m_bRor = FALSE;
 }
 

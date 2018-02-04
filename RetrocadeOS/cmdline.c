@@ -131,6 +131,22 @@ int RCParseCmdLine(int argc, char **argv) {
 				goto ERR_OUT;
 			}
 		}
+		else if (!strcmp(argv[i], "-rungame")) {	      
+			if (i+1 < argc) {
+				i++;
+
+				if (strlen(argv[i]) >= RC_MAX_ARG_LEN) {
+					nRetVal = 0;
+					goto ERR_OUT;
+				}
+
+				sprintf(gRCGlob.m_szRunGame, "%s", argv[i]);
+			}
+			else {
+				nRetVal = 0;
+				goto ERR_OUT;
+			}
+		}
 		else if (!strcmp(argv[i], "-ror")) {
 			gRCGlob.m_bRor = TRUE;
 		}
@@ -148,5 +164,5 @@ ERR_OUT:
 
 // Spits out usage string
 void _usage(void) {
-  fprintf(stderr, "Usage: retrocadeos [-cx screen_width] [-cy screen_height] [-bmpx gamebmp_width] [-bmpy gamebmp_height] [-ss screen_saver_lag_seconds] [-ror] [-cfg config_file] [-pic pics_dir]\n");
+  fprintf(stderr, "Usage: retrocadeos [-cx screen_width] [-cy screen_height] [-bmpx gamebmp_width] [-bmpy gamebmp_height] [-ss screen_saver_lag_seconds] [-ror] [-cfg config_file] [-pic pics_dir] [-rungame run game temporary file path]\n");
 }

@@ -16,6 +16,7 @@
 #define RC_MORE_NORM_BMP        "./more_norm.bmp"
 #define RC_MORE_ROR_BMP         "./more_ror.bmp"
 #define RC_MORE_BLANK_BMP       "./more_blank.bmp"
+#define RC_RUNGAME              "/tmp/RUNGAME"
 #define RC_MORE_BMP_W           100
 #define RC_MORE_BMP_H           25
 #define RC_HM_QUIT              -1
@@ -90,6 +91,7 @@ typedef struct _GLOB {
   BOOL       m_bRor;
   char       m_szCfg[RC_MAX_PREF_SIZE];
   char       m_szPic[RC_MAX_PREF_SIZE];
+  char       m_szRunGame[RC_MAX_PREF_SIZE];
 } RCGLOB;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

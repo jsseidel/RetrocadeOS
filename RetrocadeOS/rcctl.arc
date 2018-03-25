@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 EMUBIN="/home/jsseidel/rc/emu/runmame"
 RCBIN="/home/jsseidel/rc/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/jsseidel/rc/arcade_flyers_norm"
@@ -7,10 +8,13 @@ PICDIRROR="/home/jsseidel/rc/arcade_flyers_ror"
 ININORM="/home/jsseidel/rc/rcini/rc_norm.ini"
 INIROR="/home/jsseidel/rc/rcini/rc_ror.ini"
 
+. $RETROCADE_OS_HOME/lib/lib.sh
+read X Y <<< $(get_resolution)
+
 #
 # Args for retrocade
-NORM="-cx 1024 -cy 768 -bmpx 222 -bmpy 290 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
-ROR="-cx 1024 -cy 768 -bmpx 290 -bmpy 222 -cfg ${INIROR} -pic ${PICDIRROR} -ss 10 -ror"
+NORM="-cx $X -cy $Y -bmpx 222 -bmpy 290 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+ROR="-cx $X -cy $Y -bmpx 290 -bmpy 222 -cfg ${INIROR} -pic ${PICDIRROR} -ss 10 -ror"
 
 if [[ $1 = "norm" ]] 
 then

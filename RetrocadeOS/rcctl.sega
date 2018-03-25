@@ -6,9 +6,12 @@ PICDIRNORM="/home/jsseidel/rc/sega_flyers_norm"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_sega.ini"
 ROMS="/home/jsseidel/rc/sega_roms"
 
+. $RETROCADE_OS_HOME/lib/lib.sh
+read X Y <<< $(get_resolution)
+
 #
 # Args for retrocade
-NORM="-cx 1024 -cy 768 -bmpx 290 -bmpy 260 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+NORM="-cx $X -cy $Y -bmpx 290 -bmpy 260 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
 
 while [[ 1 ]]
 do

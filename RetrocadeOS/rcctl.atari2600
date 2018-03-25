@@ -6,9 +6,12 @@ PICDIRNORM="/home/jsseidel/rc/atari2600_flyers"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_atari2600.ini"
 ROMS="/home/jsseidel/rc/atari2600_roms"
 
+. $RETROCADE_OS_HOME/lib/lib.sh
+read X Y <<< $(get_resolution)
+
 #
 # Args for retrocade
-NORM="-cx 1024 -cy 768 -bmpx 240 -bmpy 290 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+NORM="-cx $X -cy $Y -bmpx 240 -bmpy 290 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
 
 while [[ 1 ]]
 do

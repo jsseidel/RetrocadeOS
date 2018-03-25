@@ -12,6 +12,7 @@
 # else it will run in a window :-P
 # 
 
-read -r X Y <<< $(xrandr | egrep current | perl -n -e 'm/current ([0-9]+) x ([0-9]+)/ ; print "$1 $2"')
+. $RETROCADE_OS_HOME/lib/lib.sh
+read -r X Y <<< $(get_resolution)
 
 mupen64plus --fullscreen --resolution ${X}x${Y} --gfx mupen64plus-video-glide64mk2 $*

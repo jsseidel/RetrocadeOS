@@ -6,9 +6,12 @@ PICDIRNORM="/home/jsseidel/rc/n64_flyers"
 ININORM="/home/jsseidel/rc/rcini/rc_norm_n64.ini"
 ROMS="/home/jsseidel/rc/n64_roms"
 
+. $RETROCADE_OS_HOME/lib/lib.sh
+read X Y <<< $(get_resolution)
+
 #
 # Args for retrocade
-NORM="-cx 1024 -cy 768 -bmpx 300 -bmpy 206 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+NORM="-cx $X -cy $Y -bmpx 300 -bmpy 206 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
 
 while [[ 1 ]]
 do

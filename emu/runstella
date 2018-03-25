@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/usr/bin/stella -fullscreen 1 $*
+/usr/bin/stella -tv.filter 1 -fullscreen 1 $*
 

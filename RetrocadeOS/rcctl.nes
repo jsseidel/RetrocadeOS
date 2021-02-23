@@ -5,5 +5,5 @@ RCBIN="/home/retrocade/RetrocadeOS/RetrocadeOS/retrocadeos"
 PICDIRNORM="/home/retrocade/RetrocadeOS/nes_flyers_norm"
 ININORM="/home/retrocade/RetrocadeOS/rcini/rc_norm_nes.ini"
 ROMS="/home/retrocade/RetrocadeOS/nes_roms"
-NEXT=sega
+NEXT=genesis
 

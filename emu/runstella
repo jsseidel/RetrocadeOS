@@ -1,4 +1,6 @@
 #!/bin/bash
 
-/usr/bin/stella -tv.filter 1 -fullscreen 1 $*
+ROM_BASE=~/RetrocadeOS/atari2600_roms
+
+/usr/bin/stella -tv.filter 1 -fullscreen 1 $ROM_BASE/$*
 

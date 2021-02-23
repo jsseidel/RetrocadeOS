@@ -1,0 +1,87 @@
+#!/bin/bash
+
+INI=$1
+if [[ "$1" == "norm" || "$1" == "ror" ]] ; then
+	INI=$2
+fi
+
+if [[ ! -r $RETROCADE_OS_HOME/RetrocadeOS/rcctl.${INI} ]] ; then
+	echo "Cannot find $RETROCADE_OS_HOME/RetrocadeOS/rcctl.${INI}."
+	exit 1
+fi
+
+if [[ ! -r $RETROCADE_OS_HOME/lib/lib.sh ]] ; then
+	echo "Cannot find $RETROCADE_OS_HOME/lib/lib.sh"
+	exit 1
+fi
+
+. $RETROCADE_OS_HOME/RetrocadeOS/rcctl.${INI}
+. $RETROCADE_OS_HOME/lib/lib.sh
+read X Y <<< $(get_resolution)
+
+#
+# Args for retrocade
+NORM="-cx $X -cy $Y -bmpx 222 -bmpy 290 -cfg ${ININORM} -pic ${PICDIRNORM} -ss 10"
+ROR="-cx $X -cy $Y -bmpx 290 -bmpy 222 -cfg ${INIROR} -pic ${PICDIRROR} -ss 10 -ror"
+
+if [[ $1 = "ror" ]] 
+then
+	ARGS=${ROR}
+	if [[ ! -d $PICDIRROR ]] ; then
+		echo "Cannot find ror pic dir"
+		exit 1
+	fi
+	
+	if [[ ! -r $INIROR ]] ; then
+		echo "Cannot find ror ini file"
+		exit 1
+	fi
+else
+	ARGS=${NORM}
+	if [[ ! -d $PICDIRNORM ]] ; then
+		echo "Cannot find norm pic dir"
+		exit 1
+	fi
+	
+	if [[ ! -r $ININORM ]] ; then
+		echo "Cannot find norm ini file"
+		exit 1
+	fi
+fi
+
+while [[ 1 ]]
+do
+	# Run retrocade
+	echo ${RCBIN} ${ARGS}
+	`${RCBIN} ${ARGS}`
+
+	# Source the output of retrocade
+	. ./RUNGAME
+	
+	if [[ ${STATE} = "SHELL" ]]
+	then	
+		exit
+	else
+		if [[ ${STATE} = "SHUTDOWN" ]] 
+		then
+			# Only works if running kiosk mode as root
+			#`shutdown -h now`
+			echo shutdown disabled
+			exit
+		elif [[ ${STATE} = "ROTATE" ]]
+		then
+			if [[ ${ARGS} = ${NORM} ]] 
+			then
+				ARGS=${ROR}
+			else
+				ARGS=${NORM}
+			fi
+		elif [[ ${STATE} = "SWITCH" ]]
+		then	
+			exec $RETROCADE_OS_HOME/RetrocadeOS/rcctl $NEXT
+		else
+			echo "${EMUBIN} ${PREFS} ${STATE}"
+			`${EMUBIN} ${PREFS} ${STATE}`
+		fi
+	fi
+done

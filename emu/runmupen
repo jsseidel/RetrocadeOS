@@ -15,4 +15,6 @@
 . $RETROCADE_OS_HOME/lib/lib.sh
 read -r X Y <<< $(get_resolution)
 
-mupen64plus --fullscreen --resolution ${X}x${Y} --gfx mupen64plus-video-glide64mk2 $*
+ROM_BASE=~/RetrocadeOS/n64_roms
+
+mupen64plus --fullscreen --resolution ${X}x${Y} --gfx mupen64plus-video-glide64mk2 $ROM_BASE/$1

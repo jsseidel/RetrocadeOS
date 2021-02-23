@@ -1,3 +1,6 @@
 #!/bin/bash
 
-mess -rp /home/jsseidel/rc/nes_roms $*
+SYSTEM=$1
+shift
+
+mame $SYSTEM -cart /home/retrocade/RetrocadeOS/${SYSTEM}_roms/$1

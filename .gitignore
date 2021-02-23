@@ -4,6 +4,8 @@
 *.nes
 *.z64
 *.o
+*.a26
 retrocadeos
 RUNGAME
 mess.ini
+history

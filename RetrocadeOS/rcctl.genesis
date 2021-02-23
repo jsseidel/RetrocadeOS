@@ -1,0 +1,9 @@
+#!/bin/bash
+
+EMUBIN="/home/retrocade/RetrocadeOS/emu/runmess genesis"
+RCBIN="/home/retrocade/RetrocadeOS/RetrocadeOS/retrocadeos"
+PICDIRNORM="/home/retrocade/RetrocadeOS/genesis_flyers_norm"
+ININORM="/home/retrocade/RetrocadeOS/rcini/rc_norm_genesis.ini"
+ROMS="/home/retrocade/RetrocadeOS/genesis_roms"
+NEXT=atari2600
+

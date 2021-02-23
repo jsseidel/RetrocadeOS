@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mame -sp /home/jsseidel/rc/samples -rp /home/jsseidel/rc/arcade_roms $*
+mame -sp /home/retrocade/RetrocadeOS/samples -rp /home/retrocade/RetrocadeOS/arcade_roms $*
